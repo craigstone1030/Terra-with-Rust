@@ -1,0 +1,55 @@
+[package]
+name = "terra-rust-api"
+version = "1.2.20"
+authors = ["PFC-Validator <PFC-Validator@protonmail.com>"]
+edition = "2018"
+license = "Apache-2.0"
+description="Terra Rust API"
+readme = "README.md"
+homepage = "https://github.com/PFC-Validator/terra-rust/tree/main/terra-rust-api"
+repository = "https://github.com/PFC-Validator/terra-rust/"
+keywords = ["terra", "blockchain"]
+categories = ["api-bindings"]
+documentation = "https://docs.rs/terra-rust-api"
+
+[features]
+default = ["native-tls"]
+native-tls = ["reqwest/native-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
+
+[dependencies]
+thiserror = "1.0"
+anyhow="1.0"
+reqwest = { version ="0.11", features=["json"], default-features = false }
+serde_json = "1.0"
+serde = { version = "1.0", features = ["derive"] }
+#rustc-serialize="0.3.24"
+erased-serde = "0.3"
+chrono= "0.4"
+hex="0.4.3"
+rust-crypto = "^0.2"
+log="0.4.14"
+rand_core = { version = "0.5", default-features = false }
+hkd32= { version="0.5.0", features=["bip39","mnemonic","bech32"] }
+subtle-encoding="0.5.1"
+bitcoin="0.27.1"
+secp256k1 = { version = "0.20.3", default-features = false }
+regex="1"
+lazy_static="1.4"
+num-traits="0.2"
+rust_decimal="1.12.2"
+rust_decimal_macros="1.12.2"
+futures="0.3.14"
+# https://crates.io/crates/prost-amino
+# tendermint = { version = "0.19", features = ["secp256k1"] }
+# ed25519 is requirement for Tendermint Consensus keys.
+# so far the only need for this is in the message to create a validator
+ed25519 = "1"
+ed25519-dalek = { version = "1", features = ["serde"] }
+#tendermint = "0.21.0.0"
+base64 = "0.13.0"
+tokio = { version = "1.14", features = ["full"] }
+[dev-dependencies]
+
+env_logger = "0.8.3"
+dotenv="0.15.0"
